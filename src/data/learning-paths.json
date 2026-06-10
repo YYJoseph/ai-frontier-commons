@@ -36,28 +36,28 @@
     "audience": "想成为 LLM / AI 应用工程师的学习者。",
     "summary": "围绕招聘中高频出现的 Transformer、embedding、RAG、微调、评测和部署建立完整主线。",
     "topicIds": ["transformer-architecture", "large-language-models", "embeddings-vector-search", "rag", "fine-tuning", "model-evaluation", "inference-serving"],
-    "resourceIds": ["cs224n-course", "huggingface-transformers-docs", "sentence-bert-paper", "rag-paper", "lora-paper", "openai-evals-repo", "vllm-docs"],
+    "resourceIds": ["large-language-models-survey", "cs224n-course", "huggingface-transformers-docs", "sentence-bert-paper", "rag-survey", "peft-survey", "llm-evaluation-survey", "vllm-docs"],
     "stages": [
       {
         "title": "模型与表示",
         "focus": "掌握 Transformer、tokenizer、embedding 和预训练模型接口。",
         "connection": "Embedding 把模型从文本生成扩展到语义检索，是 RAG、推荐和知识库问答的桥。",
         "topicIds": ["transformer-architecture", "large-language-models", "embeddings-vector-search"],
-        "resourceIds": ["cs224n-course", "huggingface-transformers-docs", "sentence-bert-paper"]
+        "resourceIds": ["large-language-models-survey", "cs224n-course", "huggingface-transformers-docs", "sentence-bert-paper"]
       },
       {
         "title": "知识增强与任务适配",
         "focus": "学习什么时候用 RAG，什么时候用微调，以及如何用数据让模型更适合具体任务。",
         "connection": "RAG 解决知识更新和可引用性，微调解决行为风格和任务分布，两者经常在真实产品中组合使用。",
         "topicIds": ["rag", "fine-tuning", "peft-lora", "synthetic-data"],
-        "resourceIds": ["rag-paper", "llamaindex-docs", "lora-paper", "huggingface-peft-docs"]
+        "resourceIds": ["rag-survey", "llamaindex-docs", "peft-survey", "huggingface-peft-docs"]
       },
       {
         "title": "可靠性与上线",
         "focus": "建立评测、推理服务、监控和成本意识。",
         "connection": "模型能力只有通过评测和服务化才能进入生产环境，LLMOps 把实验结果变成可持续迭代的系统。",
         "topicIds": ["model-evaluation", "inference-serving", "llmops"],
-        "resourceIds": ["openai-evals-repo", "vllm-docs", "langsmith-docs"]
+        "resourceIds": ["llm-evaluation-survey", "openai-evals-repo", "vllm-docs", "langsmith-docs"]
       }
     ]
   },
@@ -67,7 +67,7 @@
     "audience": "想做知识库问答、企业搜索、文档助手和研究助理类产品的开发者。",
     "summary": "RAG 不是“向量数据库加聊天框”，而是由文档处理、embedding、检索、重排、上下文组织、引用和评测构成的系统。",
     "topicIds": ["embeddings-vector-search", "vector-databases", "rag", "context-engineering", "rag-evaluation", "model-evaluation"],
-    "resourceIds": ["sentence-bert-paper", "faiss-docs", "chroma-docs", "rag-paper", "llamaindex-docs", "ragas-docs"],
+    "resourceIds": ["rag-survey", "sentence-bert-paper", "faiss-docs", "chroma-docs", "llamaindex-docs", "ragas-docs"],
     "stages": [
       {
         "title": "从语义表示到检索",
@@ -81,7 +81,7 @@
         "focus": "学习文档切分、元数据、检索策略、上下文压缩和引用组织。",
         "connection": "RAG 是 Context Engineering 的核心案例：你不是只问模型，而是在决定模型应该看见什么证据。",
         "topicIds": ["rag", "context-engineering", "context-selection"],
-        "resourceIds": ["rag-paper", "llamaindex-docs", "context-engineering-phil-schmid"]
+        "resourceIds": ["rag-survey", "llamaindex-docs", "context-engineering-phil-schmid"]
       },
       {
         "title": "从 demo 到可评测系统",
@@ -98,14 +98,14 @@
     "audience": "想开发 agent 项目、Codex 插件、skills 或工具生态的开发者。",
     "summary": "从工具调用开始，逐步理解编排、记忆、权限、观测、验证和可复用能力封装。",
     "topicIds": ["ai-agents", "agent-engineering", "tool-use", "model-context-protocol", "orchestration", "memory-systems", "harness-engineering", "permissions-safety"],
-    "resourceIds": ["openai-agents-sdk-docs", "langgraph-docs", "crewai-docs", "mcp-docs", "claude-code-skills-docs", "openai-skills-docs", "codex-plugins-docs"],
+    "resourceIds": ["llm-agents-survey", "openai-agents-sdk-docs", "langgraph-docs", "crewai-docs", "mcp-docs", "claude-code-skills-docs", "openai-skills-docs", "codex-plugins-docs"],
     "stages": [
       {
         "title": "先让模型能安全地行动",
         "focus": "学习工具调用、函数接口、MCP 和外部环境连接方式。",
         "connection": "Agent 的核心不是“会聊天”，而是能在权限边界内观察、调用工具并产生可验证动作。",
         "topicIds": ["ai-agents", "tool-use", "model-context-protocol"],
-        "resourceIds": ["openai-agents-sdk-docs", "mcp-docs"]
+        "resourceIds": ["llm-agents-survey", "openai-agents-sdk-docs", "mcp-docs"]
       },
       {
         "title": "把一次调用变成工作流",
@@ -129,14 +129,14 @@
     "audience": "想理解 SFT、LoRA、RLHF、DPO、合成数据和领域适配的学习者。",
     "summary": "把“模型会什么”与“模型应该如何表现”区分开，理解微调、偏好优化和数据构造之间的关系。",
     "topicIds": ["fine-tuning", "peft-lora", "rlhf-dpo", "synthetic-data", "model-evaluation"],
-    "resourceIds": ["lora-paper", "huggingface-peft-docs", "instructgpt-paper", "dpo-paper", "self-instruct-paper", "openai-evals-repo"],
+    "resourceIds": ["peft-survey", "lora-paper", "huggingface-peft-docs", "instructgpt-paper", "dpo-paper", "self-instruct-paper", "openai-evals-repo"],
     "stages": [
       {
         "title": "任务适配",
         "focus": "用 SFT、PEFT 和 LoRA 让模型适应领域格式、语气、任务和数据分布。",
         "connection": "微调不是替代 RAG，而是让模型在已有知识和行为模式上更贴近目标任务。",
         "topicIds": ["fine-tuning", "peft-lora"],
-        "resourceIds": ["lora-paper", "huggingface-peft-docs"]
+        "resourceIds": ["peft-survey", "lora-paper", "huggingface-peft-docs"]
       },
       {
         "title": "偏好与对齐",
@@ -160,7 +160,7 @@
     "audience": "想进入 AI Infra、推理优化、模型部署或高性能系统方向的学习者。",
     "summary": "从“能跑模型”进入“低延迟、高吞吐、低成本、可监控地跑模型”。这是很多 AI 公司招聘里非常看重的工程能力。",
     "topicIds": ["inference-serving", "inference-optimization", "quantization", "gpu-computing", "cuda-triton", "llmops"],
-    "resourceIds": ["vllm-docs", "tensorrt-llm-docs", "huggingface-quantization-docs", "cuda-programming-guide", "triton-docs", "langsmith-docs"],
+    "resourceIds": ["efficient-llm-survey", "vllm-docs", "tensorrt-llm-docs", "huggingface-quantization-docs", "cuda-programming-guide", "triton-docs", "langsmith-docs"],
     "stages": [
       {
         "title": "服务化推理",
@@ -174,7 +174,7 @@
         "focus": "学习量化、连续批处理、并行策略和推理优化工具链。",
         "connection": "当请求量增长时，瓶颈从 prompt 质量转向 GPU 利用率、内存带宽和调度效率。",
         "topicIds": ["inference-optimization", "quantization"],
-        "resourceIds": ["tensorrt-llm-docs", "huggingface-quantization-docs"]
+        "resourceIds": ["efficient-llm-survey", "tensorrt-llm-docs", "huggingface-quantization-docs"]
       },
       {
         "title": "深入 GPU 与 kernel",
@@ -191,21 +191,21 @@
     "audience": "想从提示词走向可维护 AI 系统的开发者和研究型学习者。",
     "summary": "按 Prompt Engineering、Context Engineering、Agent Engineering、Harness Engineering 的顺序理解 AI 工程能力如何逐层上升。",
     "topicIds": ["prompt-engineering", "context-engineering", "agent-engineering", "harness-engineering", "observability", "permissions-safety", "verification"],
-    "resourceIds": ["prompt-engineering-guide", "context-engineering-phil-schmid", "openai-agents-sdk-docs", "ai-harness-engineering-paper", "agentic-harness-engineering-paper", "semaclaw-harness-paper"],
+    "resourceIds": ["prompt-report-survey", "context-engineering-survey", "prompt-engineering-guide", "context-engineering-phil-schmid", "openai-agents-sdk-docs", "ai-harness-engineering-paper", "agentic-harness-engineering-paper", "semaclaw-harness-paper"],
     "stages": [
       {
         "title": "Prompt 是局部控制",
         "focus": "用结构化指令、示例和输出格式控制单次模型行为。",
         "connection": "Prompt Engineering 是入口，但它只能控制模型看到的一小部分输入。",
         "topicIds": ["prompt-engineering", "prompt-patterns"],
-        "resourceIds": ["prompt-engineering-guide"]
+        "resourceIds": ["prompt-report-survey", "prompt-engineering-guide"]
       },
       {
         "title": "Context 是系统输入",
         "focus": "组织系统提示、文件、检索结果、历史、工具说明和任务状态。",
         "connection": "Context Engineering 把局部 prompt 扩展成完整运行环境，RAG 和 agent 都依赖它。",
         "topicIds": ["context-engineering", "context-selection", "rag"],
-        "resourceIds": ["context-engineering-phil-schmid", "rag-paper"]
+        "resourceIds": ["context-engineering-survey", "context-engineering-phil-schmid", "rag-paper"]
       },
       {
         "title": "Harness 是运行时底座",
