@@ -282,5 +282,19 @@
     "datePublished": "2026-01-14",
     "dateAdded": "2026-06-10",
     "status": "approved"
+  },
+  {
+    "id": "welch-labs-youtube",
+    "title": "Welch Labs",
+    "type": "talk",
+    "url": "https://www.youtube.com/@WelchLabs",
+    "source": "YouTube",
+    "summary": "一个以可视化方式讲解数学、神经网络和机器学习概念的教育频道。",
+    "whyItMatters": "它适合帮助学习者建立直觉，尤其适合作为理解神经网络和深度学习基础概念的补充材料。",
+    "topics": ["ai-education", "deep-learning", "machine-learning"],
+    "difficulty": "beginner",
+    "people": ["Welch Labs"],
+    "dateAdded": "2026-06-10",
+    "status": "approved"
   }
 ]

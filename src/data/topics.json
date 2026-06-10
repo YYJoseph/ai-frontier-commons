@@ -4,7 +4,7 @@
     "title": "AI 基础",
     "summary": "理解现代 AI 所需的核心概念、发展脉络、数学基础与计算基础。",
     "prerequisites": [],
-    "children": ["machine-learning", "deep-learning", "modern-ai-engineering", "evaluation", "ai-safety"],
+    "children": ["machine-learning", "deep-learning", "modern-ai-engineering", "ai-education", "evaluation", "ai-safety"],
     "featuredResourceIds": ["hands-on-ml-book", "karpathy-state-of-gpt"]
   },
   {
@@ -15,6 +15,15 @@
     "prerequisites": ["ai-foundations"],
     "children": ["deep-learning"],
     "featuredResourceIds": ["hands-on-ml-book"]
+  },
+  {
+    "id": "ai-education",
+    "title": "AI 学习与科普",
+    "summary": "面向学习者的课程、可视化讲解、访谈节目和知识传播内容，帮助建立直觉与长期学习兴趣。",
+    "parentId": "ai-foundations",
+    "prerequisites": ["ai-foundations"],
+    "children": [],
+    "featuredResourceIds": ["welch-labs-youtube"]
   },
   {
     "id": "deep-learning",

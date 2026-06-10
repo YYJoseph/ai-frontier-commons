@@ -4,8 +4,8 @@
     "title": "AI 入门路径",
     "audience": "希望建立 AI 整体地图的学生和自学者。",
     "summary": "先从 AI 基础开始，再逐步进入机器学习、深度学习和现代大语言模型。",
-    "topicIds": ["ai-foundations", "machine-learning", "deep-learning", "large-language-models"],
-    "resourceIds": ["hands-on-ml-book", "deep-learning-book", "hugging-face-course", "karpathy-state-of-gpt"]
+    "topicIds": ["ai-foundations", "ai-education", "machine-learning", "deep-learning", "large-language-models"],
+    "resourceIds": ["welch-labs-youtube", "hands-on-ml-book", "deep-learning-book", "hugging-face-course", "karpathy-state-of-gpt"]
   },
   {
     "id": "agent-builder",
