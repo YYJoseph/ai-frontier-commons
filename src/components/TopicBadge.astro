@@ -1,9 +1,10 @@
 ---
 import topics from "../data/topics.json";
+import worldModelTopics from "../data/world-model-topics.json";
 import type { TopicNode } from "../lib/schema";
 
 const { label } = Astro.props;
-const topicById = new Map((topics as TopicNode[]).map((topic) => [topic.id, topic.title]));
+const topicById = new Map([...(topics as TopicNode[]), ...(worldModelTopics as TopicNode[])].map((topic) => [topic.id, topic.title]));
 const displayLabel = topicById.get(label) ?? label;
 ---
 

@@ -1,10 +1,12 @@
 import fs from "node:fs";
 
 const topics = JSON.parse(fs.readFileSync("src/data/topics.json", "utf8"));
+const worldModelTopics = JSON.parse(fs.readFileSync("src/data/world-model-topics.json", "utf8"));
 const resources = JSON.parse(fs.readFileSync("src/data/resources.json", "utf8"));
 const paths = JSON.parse(fs.readFileSync("src/data/learning-paths.json", "utf8"));
 
-const topicIds = new Set(topics.map((topic) => topic.id));
+const allTopics = [...topics, ...worldModelTopics];
+const topicIds = new Set(allTopics.map((topic) => topic.id));
 const resourceIds = new Set(resources.map((resource) => resource.id));
 const allowedTypes = new Set([
   "paper",
@@ -38,10 +40,11 @@ function assertUniqueIds(items, label) {
 }
 
 assertUniqueIds(topics, "Topic");
+assertUniqueIds(worldModelTopics, "World model topic");
 assertUniqueIds(resources, "Resource");
 assertUniqueIds(paths, "Learning path");
 
-for (const topic of topics) {
+for (const topic of allTopics) {
   assert(topic.id && topic.title && topic.summary, `Topic ${topic.id || "unknown"} is missing required fields`);
   for (const childId of topic.children || []) {
     assert(topicIds.has(childId), `Topic ${topic.id} references missing child ${childId}`);
@@ -74,4 +77,4 @@ for (const path of paths) {
   }
 }
 
-console.log(`Validated ${topics.length} topics, ${resources.length} resources, and ${paths.length} learning paths.`);
+console.log(`Validated ${topics.length} topics, ${worldModelTopics.length} world model topics, ${resources.length} resources, and ${paths.length} learning paths.`);

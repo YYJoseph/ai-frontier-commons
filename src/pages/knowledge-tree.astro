@@ -2,9 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import KnowledgeTree from "../components/KnowledgeTree.astro";
 import topics from "../data/topics.json";
+import worldModelTopics from "../data/world-model-topics.json";
 import type { TopicNode } from "../lib/schema";
 
 const allTopics = topics as TopicNode[];
+const allWorldModelTopics = worldModelTopics as TopicNode[];
 ---
 
 <BaseLayout title="知识树">
@@ -18,6 +20,17 @@ const allTopics = topics as TopicNode[];
     </div>
     <div class="mt-10">
       <KnowledgeTree topics={allTopics} />
+    </div>
+
+    <div class="mt-14 rounded-lg border border-stone-200 bg-porcelain p-8 shadow-sm">
+      <p class="text-sm font-semibold uppercase tracking-wide text-accent">世界模型</p>
+      <h2 class="mt-3 text-3xl font-bold text-ink">一棵独立的 World Models 知识树</h2>
+      <p class="mt-4 max-w-3xl text-slate-700">
+        世界模型关注的是 AI 如何在内部建立对环境的预测模型，并把这种预测用于规划、控制、具身交互和生成式仿真。它和 LLM/Agent 工程有关，但主线更偏向“理解世界如何变化”。
+      </p>
+    </div>
+    <div class="mt-10">
+      <KnowledgeTree topics={allWorldModelTopics} />
     </div>
   </section>
 </BaseLayout>

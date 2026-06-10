@@ -1,0 +1,100 @@
+[
+  {
+    "id": "world-models",
+    "title": "世界模型",
+    "summary": "让 AI 在内部学习环境如何变化，并用这种模型进行预测、想象、规划和行动。它连接了自监督学习、模型式强化学习、视频生成、具身智能和智能体控制。",
+    "prerequisites": ["deep-learning", "machine-learning"],
+    "children": ["wm-representation-learning", "wm-latent-dynamics", "wm-planning-control", "wm-generative-environments", "wm-embodied-agents", "wm-evaluation-safety"],
+    "featuredResourceIds": ["world-models-paper", "dreamerv3-paper", "genie-paper"]
+  },
+  {
+    "id": "wm-representation-learning",
+    "title": "状态表征与自监督学习",
+    "summary": "把高维观察，例如图像、视频、传感器数据，压缩成可预测、可比较、可用于决策的潜在状态。",
+    "parentId": "world-models",
+    "prerequisites": ["deep-learning", "multimodal-ai"],
+    "children": ["wm-jepa"],
+    "featuredResourceIds": ["i-jepa-paper", "v-jepa-paper"]
+  },
+  {
+    "id": "wm-jepa",
+    "title": "JEPA 与潜在空间预测",
+    "summary": "Joint-Embedding Predictive Architecture 不是重建像素细节，而是在表征空间预测未来或被遮挡部分，从而更关注语义和物理结构。",
+    "parentId": "wm-representation-learning",
+    "prerequisites": ["wm-representation-learning"],
+    "children": [],
+    "featuredResourceIds": ["i-jepa-paper", "v-jepa-paper"]
+  },
+  {
+    "id": "wm-latent-dynamics",
+    "title": "潜在动态模型",
+    "summary": "学习状态如何随动作和时间变化，包括转移、奖励、终止、随机性和不确定性，是世界模型从“看懂环境”走向“预测环境”的关键。",
+    "parentId": "world-models",
+    "prerequisites": ["wm-representation-learning"],
+    "children": ["wm-model-based-rl"],
+    "featuredResourceIds": ["planet-paper", "dreamer-paper"]
+  },
+  {
+    "id": "wm-model-based-rl",
+    "title": "模型式强化学习",
+    "summary": "用学到的环境模型辅助策略学习，让智能体可以在内部想象未来轨迹，而不是完全依赖真实环境试错。",
+    "parentId": "wm-latent-dynamics",
+    "prerequisites": ["wm-latent-dynamics"],
+    "children": [],
+    "featuredResourceIds": ["dreamer-paper", "dreamerv3-paper"]
+  },
+  {
+    "id": "wm-planning-control",
+    "title": "规划与控制",
+    "summary": "基于世界模型预测未来后果，再通过搜索、优化、想象 rollout 或策略学习选择行动。",
+    "parentId": "world-models",
+    "prerequisites": ["wm-latent-dynamics"],
+    "children": ["wm-imagination-rollouts"],
+    "featuredResourceIds": ["muzero-paper", "dreamerv3-paper"]
+  },
+  {
+    "id": "wm-imagination-rollouts",
+    "title": "想象 Rollout",
+    "summary": "在模型内部展开可能的未来轨迹，用于价值估计、策略更新、风险评估和长程决策。",
+    "parentId": "wm-planning-control",
+    "prerequisites": ["wm-planning-control"],
+    "children": [],
+    "featuredResourceIds": ["dreamer-paper", "dreamerv3-paper"]
+  },
+  {
+    "id": "wm-generative-environments",
+    "title": "生成式交互环境",
+    "summary": "用生成模型创建可交互、可控制、具有时间一致性的环境，让 agent 或人类可以在生成世界中探索。",
+    "parentId": "world-models",
+    "prerequisites": ["multimodal-ai", "wm-latent-dynamics"],
+    "children": ["wm-video-world-models"],
+    "featuredResourceIds": ["genie-paper"]
+  },
+  {
+    "id": "wm-video-world-models",
+    "title": "视频世界模型",
+    "summary": "从视频中学习动作、物体、空间和时间一致性，是从被动视频生成走向可交互世界生成的重要路径。",
+    "parentId": "wm-generative-environments",
+    "prerequisites": ["wm-generative-environments"],
+    "children": [],
+    "featuredResourceIds": ["v-jepa-paper", "genie-paper"]
+  },
+  {
+    "id": "wm-embodied-agents",
+    "title": "具身智能与机器人",
+    "summary": "把世界模型用于机器人、游戏智能体和自动驾驶等场景，让 agent 在动态环境中理解空间、物理、动作后果和任务目标。",
+    "parentId": "world-models",
+    "prerequisites": ["wm-planning-control", "wm-generative-environments"],
+    "children": [],
+    "featuredResourceIds": ["dreamerv3-paper", "genie-paper"]
+  },
+  {
+    "id": "wm-evaluation-safety",
+    "title": "评测、安全与现实落地",
+    "summary": "评估世界模型是否真正学到物理和因果结构，而不是只生成看似合理的视频；同时关注幻觉环境、分布外风险和现实迁移失败。",
+    "parentId": "world-models",
+    "prerequisites": ["wm-planning-control", "wm-generative-environments"],
+    "children": [],
+    "featuredResourceIds": ["muzero-paper", "genie-paper"]
+  }
+]
