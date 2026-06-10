@@ -298,6 +298,20 @@
     "status": "approved"
   },
   {
+    "id": "zhang-xiaojun-podcast",
+    "title": "Zhang Xiaojun Podcast",
+    "type": "podcast",
+    "url": "https://www.youtube.com/@xiaojunpodcast",
+    "source": "YouTube",
+    "summary": "张小珺的访谈节目频道，常以对话方式讨论科技、商业、创新和 AI 相关议题。",
+    "whyItMatters": "它适合作为技术资料之外的补充，帮助学习者理解 AI 从业者、创业者和研究者如何看待产业变化、产品机会与长期趋势。",
+    "topics": ["ai-education", "large-language-models", "modern-ai-engineering"],
+    "difficulty": "beginner",
+    "people": ["张小珺"],
+    "dateAdded": "2026-06-10",
+    "status": "approved"
+  },
+  {
     "id": "langgraph-docs",
     "title": "LangGraph",
     "type": "framework",

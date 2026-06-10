@@ -4,7 +4,7 @@ import ResourceCard from "../components/ResourceCard.astro";
 import resources from "../data/resources.json";
 import type { Resource } from "../lib/schema";
 
-const interviews = (resources as Resource[]).filter((resource: Resource) => resource.type === "interview" || resource.type === "talk");
+const interviews = (resources as Resource[]).filter((resource: Resource) => resource.type === "interview" || resource.type === "podcast" || resource.type === "talk");
 ---
 
 <BaseLayout title="访谈">
