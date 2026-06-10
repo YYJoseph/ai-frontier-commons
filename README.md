@@ -51,3 +51,7 @@ https://YYJoseph.github.io/ai-frontier-commons/
 ## 参与共建
 
 打开 Issue 可以提交资源或建议改进知识树。审核标准见 `CONTRIBUTING.md`。
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for details.
