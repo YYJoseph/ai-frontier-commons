@@ -53,6 +53,7 @@ export interface LearningPath {
     title: string;
     focus: string;
     connection: string;
+    checkpoint?: string;
     topicIds: string[];
     resourceIds: string[];
   }[];
