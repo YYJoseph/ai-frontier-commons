@@ -94,7 +94,7 @@
     "summary": "围绕目标分解、工具调用、状态管理、错误恢复、权限控制和评测闭环来设计可运行的 agent 系统。",
     "parentId": "ai-agents",
     "prerequisites": ["ai-agents", "context-engineering"],
-    "children": ["tool-use", "orchestration", "harness-engineering", "verification"],
+    "children": ["tool-use", "model-context-protocol", "orchestration", "harness-engineering", "verification"],
     "featuredResourceIds": ["openai-agents-sdk-docs", "ai-harness-engineering-paper"]
   },
   {
@@ -103,8 +103,17 @@
     "summary": "让模型通过函数、API、浏览器、终端、数据库或 MCP 等外部工具观察世界并执行动作。",
     "parentId": "agent-engineering",
     "prerequisites": ["large-language-models"],
-    "children": [],
+    "children": ["model-context-protocol"],
     "featuredResourceIds": ["openai-agents-sdk-docs"]
+  },
+  {
+    "id": "model-context-protocol",
+    "title": "Model Context Protocol",
+    "summary": "一种连接模型、工具、数据源和应用环境的协议生态，让 agent 能以更标准的方式使用外部能力。",
+    "parentId": "tool-use",
+    "prerequisites": ["tool-use", "context-engineering"],
+    "children": ["mcp-security"],
+    "featuredResourceIds": ["mcp-docs", "mcp-prompt-injection-paper"]
   },
   {
     "id": "orchestration",
@@ -157,7 +166,7 @@
     "summary": "限制 agent 能访问的文件、网络、命令、凭据和外部系统，并在高风险动作前加入确认和审计。",
     "parentId": "harness-engineering",
     "prerequisites": ["harness-engineering"],
-    "children": ["prompt-injection"],
+    "children": ["prompt-injection", "mcp-security", "agent-security"],
     "featuredResourceIds": ["semaclaw-harness-paper"]
   },
   {
@@ -202,7 +211,7 @@
     "summary": "研究和实践如何降低 AI 系统的滥用、失控、越权、偏见、隐私和安全风险。",
     "parentId": "ai-foundations",
     "prerequisites": ["ai-foundations"],
-    "children": ["prompt-injection", "permissions-safety"],
+    "children": ["prompt-injection", "agent-security", "mcp-security", "permissions-safety"],
     "featuredResourceIds": ["prompt-injection-overview"]
   },
   {
@@ -213,5 +222,23 @@
     "prerequisites": ["prompt-engineering"],
     "children": [],
     "featuredResourceIds": ["prompt-injection-overview"]
+  },
+  {
+    "id": "agent-security",
+    "title": "Agent 安全",
+    "summary": "面向具备工具调用、长期上下文和自主执行能力的 agent，设计身份、权限、审计、隔离和人工确认机制。",
+    "parentId": "ai-safety",
+    "prerequisites": ["ai-agents", "permissions-safety"],
+    "children": ["prompt-injection", "mcp-security"],
+    "featuredResourceIds": ["secure-ai-agents-paper", "ai-agents-prompt-injection-paper"]
+  },
+  {
+    "id": "mcp-security",
+    "title": "MCP 安全",
+    "summary": "研究 MCP 客户端、工具描述、参数、权限和审计机制中的攻击面，尤其是工具投毒与跨工具 prompt injection。",
+    "parentId": "model-context-protocol",
+    "prerequisites": ["model-context-protocol", "prompt-injection"],
+    "children": [],
+    "featuredResourceIds": ["mcp-prompt-injection-paper"]
   }
 ]

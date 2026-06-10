@@ -30,5 +30,13 @@
     "summary": "按 Prompt Engineering、Context Engineering、Agent Engineering、Harness Engineering 的顺序理解 AI 工程能力如何逐层上升。",
     "topicIds": ["prompt-engineering", "context-engineering", "agent-engineering", "harness-engineering", "observability", "permissions-safety", "verification"],
     "resourceIds": ["prompt-engineering-guide", "context-engineering-phil-schmid", "openai-agents-sdk-docs", "ai-harness-engineering-paper", "agentic-harness-engineering-paper", "semaclaw-harness-paper"]
+  },
+  {
+    "id": "agent-security",
+    "title": "Agent 安全路径",
+    "audience": "关注 AI agent、MCP 工具生态和 prompt injection 风险的开发者。",
+    "summary": "从 prompt injection 基础开始，逐步理解 MCP 安全、agent 权限边界、系统级防御和 promptware 威胁建模。",
+    "topicIds": ["prompt-injection", "agent-security", "mcp-security", "permissions-safety", "harness-engineering"],
+    "resourceIds": ["prompt-injection-overview", "mcp-prompt-injection-paper", "secure-ai-agents-paper", "ai-agents-prompt-injection-paper", "promptware-kill-chain-paper"]
   }
 ]
