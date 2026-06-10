@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import resources from "../data/resources.json";
+import type { Resource } from "../lib/schema";
+
+const grouped = Object.entries(
+  (resources as Resource[]).reduce<Record<string, Resource[]>>((acc, resource: Resource) => {
+    acc[resource.type] = [...(acc[resource.type] || []), resource];
+    return acc;
+  }, {})
+);
+const typeLabels: Record<string, string> = {
+  paper: "论文",
+  repo: "开源项目",
+  article: "文章",
+  interview: "访谈",
+  course: "课程",
+  tool: "工具",
+  dataset: "数据集",
+  talk: "演讲"
+};
+---
+
+<BaseLayout title="资源库">
+  <section class="mx-auto max-w-7xl px-5 py-12">
+    <div class="rounded-lg border border-stone-200 bg-porcelain p-8 shadow-sm">
+      <p class="text-sm font-semibold uppercase tracking-wide text-accent">资源库</p>
+      <h1 class="mt-3 text-4xl font-bold text-ink">精选 AI 学习资源</h1>
+      <p class="mt-4 max-w-2xl text-slate-700">这里收录具有学习价值的论文、开源项目、文章、工具、数据集、课程、访谈和演讲。</p>
+    </div>
+    <div class="mt-10 space-y-10">
+      {grouped.map(([type, items]) => (
+        <section>
+          <h2 class="mb-4 text-2xl font-semibold capitalize text-ink">{typeLabels[type] ?? type}</h2>
+          <div class="grid gap-5 md:grid-cols-2">
+            {items.map((resource: Resource) => <ResourceCard resource={resource} />)}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

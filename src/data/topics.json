@@ -1,0 +1,73 @@
+[
+  {
+    "id": "ai-foundations",
+    "title": "AI 基础",
+    "summary": "理解现代 AI 所需的核心概念、发展脉络、数学基础与计算基础。",
+    "prerequisites": [],
+    "children": ["machine-learning", "deep-learning", "evaluation"],
+    "featuredResourceIds": ["hands-on-ml-book"]
+  },
+  {
+    "id": "machine-learning",
+    "title": "机器学习",
+    "summary": "从数据中学习模式的算法与系统，是理解现代 AI 的重要基础。",
+    "parentId": "ai-foundations",
+    "prerequisites": ["ai-foundations"],
+    "children": ["deep-learning"],
+    "featuredResourceIds": ["hands-on-ml-book"]
+  },
+  {
+    "id": "deep-learning",
+    "title": "深度学习",
+    "summary": "以神经网络为核心的方法体系，支撑了大多数现代 AI 系统。",
+    "parentId": "machine-learning",
+    "prerequisites": ["machine-learning"],
+    "children": ["large-language-models", "multimodal-ai"],
+    "featuredResourceIds": ["deep-learning-book"]
+  },
+  {
+    "id": "large-language-models",
+    "title": "大语言模型",
+    "summary": "以 Transformer 为代表的模型体系，用于语言理解、生成、推理和工具调用。",
+    "parentId": "deep-learning",
+    "prerequisites": ["deep-learning"],
+    "children": ["ai-agents", "rag"],
+    "featuredResourceIds": ["attention-is-all-you-need"]
+  },
+  {
+    "id": "ai-agents",
+    "title": "AI Agent",
+    "summary": "能够利用模型进行规划、调用工具、观察结果并完成任务的系统。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models"],
+    "children": [],
+    "featuredResourceIds": ["openai-agents-sdk-docs"]
+  },
+  {
+    "id": "rag",
+    "title": "检索增强生成",
+    "summary": "把检索系统和生成模型结合起来，让回答能够基于外部知识和资料。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models"],
+    "children": [],
+    "featuredResourceIds": ["rag-paper"]
+  },
+  {
+    "id": "multimodal-ai",
+    "title": "多模态 AI",
+    "summary": "能够跨文本、图像、音频、视频等多种模态理解或生成内容的 AI 系统。",
+    "parentId": "deep-learning",
+    "prerequisites": ["deep-learning"],
+    "children": [],
+    "featuredResourceIds": ["clip-paper"]
+  },
+  {
+    "id": "evaluation",
+    "title": "评测",
+    "summary": "围绕 AI 系统效果、可靠性和安全性的基准测试、人工评估与自动化评测方法。",
+    "parentId": "ai-foundations",
+    "prerequisites": ["ai-foundations"],
+    "children": [],
+    "featuredResourceIds": ["openai-evals-repo"]
+  }
+]

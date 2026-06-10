@@ -1,0 +1,25 @@
+name: Improve Knowledge Tree
+description: Suggest a new AI topic or a change to the knowledge tree.
+title: "[Knowledge Tree]: "
+labels: ["knowledge-tree"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Topic or node name
+      placeholder: Example: Tool Use
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What should change?
+      description: Describe the new node, moved node, prerequisite, or resource connection.
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why does this improve the map?
+    validations:
+      required: true
