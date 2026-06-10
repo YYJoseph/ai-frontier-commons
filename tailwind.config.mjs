@@ -3,13 +3,37 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#15202b",
-        paper: "#f6f7f4",
-        accent: "#0f766e",
-        moss: "#60765a",
-        saffron: "#d97706",
-        coral: "#e85d3f",
-        porcelain: "#fffdf8"
+        ink: "#2b2118",
+        paper: "#f5f0e8",
+        accent: "#8a4f2a",
+        moss: "#6f715d",
+        saffron: "#b66a2c",
+        coral: "#a95d43",
+        porcelain: "#fbf7ef",
+        linen: "#ede4d8",
+        clay: "#d8c7b3"
+      },
+      fontFamily: {
+        sans: [
+          "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Noto Sans SC",
+          "PingFang SC",
+          "Microsoft YaHei",
+          "sans-serif"
+        ],
+        display: [
+          "ui-serif",
+          "Georgia",
+          "Cambria",
+          "Songti SC",
+          "STSong",
+          "serif"
+        ]
       }
     }
   },
