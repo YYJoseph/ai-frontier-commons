@@ -4,22 +4,58 @@ import ResourceCard from "../components/ResourceCard.astro";
 import resources from "../data/resources.json";
 import type { Resource } from "../lib/schema";
 
-const grouped = Object.entries(
-  (resources as Resource[]).reduce<Record<string, Resource[]>>((acc, resource: Resource) => {
+const groupedByType = (resources as Resource[]).reduce<Record<string, Resource[]>>((acc, resource: Resource) => {
     acc[resource.type] = [...(acc[resource.type] || []), resource];
     return acc;
-  }, {})
-);
+  }, {});
 const typeLabels: Record<string, string> = {
   paper: "论文",
   repo: "开源项目",
   article: "文章",
   interview: "访谈",
+  podcast: "访谈节目",
   course: "课程",
+  "teaching-video": "教学视频",
+  documentation: "官方文档",
+  framework: "框架",
+  "skill-plugin": "Skills / 插件",
   tool: "工具",
   dataset: "数据集",
   talk: "演讲"
 };
+const typeDescriptions: Record<string, string> = {
+  paper: "适合深入理解理论、方法和前沿研究。",
+  course: "适合系统学习和循序渐进补基础。",
+  "teaching-video": "适合建立直觉、快速入门和反复观看。",
+  interview: "适合理解研究者、工程师和创业者如何思考。",
+  podcast: "适合通勤或碎片时间吸收观点和经验。",
+  framework: "适合动手构建 agent、RAG、多 agent 和工作流系统。",
+  "skill-plugin": "适合学习如何扩展 agent 能力与复用工作流。",
+  documentation: "适合查阅官方能力边界和最佳实践。",
+  tool: "适合工程实践、评测、观测和生产化。",
+  repo: "适合阅读源码、复现实验或参考实现。",
+  dataset: "适合理解任务、基准和数据驱动的 AI 发展。",
+  article: "适合追踪概念解释、工程经验和趋势分析。",
+  talk: "适合通过演讲理解技术脉络和关键判断。"
+};
+const typeOrder = [
+  "paper",
+  "course",
+  "teaching-video",
+  "interview",
+  "podcast",
+  "framework",
+  "skill-plugin",
+  "documentation",
+  "tool",
+  "repo",
+  "dataset",
+  "article",
+  "talk"
+];
+const grouped = typeOrder
+  .filter((type) => groupedByType[type]?.length)
+  .map((type) => [type, groupedByType[type]] as const);
 ---
 
 <BaseLayout title="资源库">
@@ -27,12 +63,13 @@ const typeLabels: Record<string, string> = {
     <div class="rounded-lg border border-stone-200 bg-porcelain p-8 shadow-sm">
       <p class="text-sm font-semibold uppercase tracking-wide text-accent">资源库</p>
       <h1 class="mt-3 text-4xl font-bold text-ink">精选 AI 学习资源</h1>
-      <p class="mt-4 max-w-2xl text-slate-700">这里收录具有学习价值的论文、开源项目、文章、工具、数据集、课程、访谈和演讲。</p>
+      <p class="mt-4 max-w-3xl text-slate-700">这里按学习用途清晰整理资源：论文、课程、教学视频、访谈节目、框架、Skills 与插件、官方文档、工具、开源项目和数据集。每个分类只收录有明确学习价值的内容，避免重复堆链接。</p>
     </div>
     <div class="mt-10 space-y-10">
       {grouped.map(([type, items]) => (
         <section>
           <h2 class="mb-4 text-2xl font-semibold capitalize text-ink">{typeLabels[type] ?? type}</h2>
+          <p class="mb-4 text-sm leading-6 text-slate-600">{typeDescriptions[type]}</p>
           <div class="grid gap-5 md:grid-cols-2">
             {items.map((resource: Resource) => <ResourceCard resource={resource} />)}
           </div>

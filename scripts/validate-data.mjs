@@ -6,7 +6,21 @@ const paths = JSON.parse(fs.readFileSync("src/data/learning-paths.json", "utf8")
 
 const topicIds = new Set(topics.map((topic) => topic.id));
 const resourceIds = new Set(resources.map((resource) => resource.id));
-const allowedTypes = new Set(["paper", "repo", "article", "interview", "course", "tool", "dataset", "talk"]);
+const allowedTypes = new Set([
+  "paper",
+  "repo",
+  "article",
+  "interview",
+  "podcast",
+  "course",
+  "teaching-video",
+  "documentation",
+  "framework",
+  "skill-plugin",
+  "tool",
+  "dataset",
+  "talk"
+]);
 const allowedDifficulty = new Set(["beginner", "intermediate", "advanced"]);
 
 function assert(condition, message) {

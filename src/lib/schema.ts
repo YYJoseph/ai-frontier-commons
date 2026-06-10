@@ -3,7 +3,12 @@ export type ResourceType =
   | "repo"
   | "article"
   | "interview"
+  | "podcast"
   | "course"
+  | "teaching-video"
+  | "documentation"
+  | "framework"
+  | "skill-plugin"
   | "tool"
   | "dataset"
   | "talk";
@@ -44,4 +49,11 @@ export interface LearningPath {
   summary: string;
   topicIds: string[];
   resourceIds: string[];
+  stages?: {
+    title: string;
+    focus: string;
+    connection: string;
+    topicIds: string[];
+    resourceIds: string[];
+  }[];
 }

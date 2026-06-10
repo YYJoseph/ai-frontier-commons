@@ -31,8 +31,17 @@
     "summary": "以神经网络为核心的方法体系，支撑了大多数现代 AI 系统。",
     "parentId": "machine-learning",
     "prerequisites": ["machine-learning"],
-    "children": ["large-language-models", "multimodal-ai"],
+    "children": ["transformer-architecture", "large-language-models", "multimodal-ai"],
     "featuredResourceIds": ["deep-learning-book"]
+  },
+  {
+    "id": "transformer-architecture",
+    "title": "Transformer 架构",
+    "summary": "现代大模型的核心网络结构，包含 self-attention、位置编码、前馈网络、残差连接和归一化等关键组件。",
+    "parentId": "deep-learning",
+    "prerequisites": ["deep-learning"],
+    "children": [],
+    "featuredResourceIds": ["attention-is-all-you-need", "illustrated-transformer"]
   },
   {
     "id": "large-language-models",
@@ -40,7 +49,7 @@
     "summary": "以 Transformer 为代表的模型体系，用于语言理解、生成、推理和工具调用。",
     "parentId": "deep-learning",
     "prerequisites": ["deep-learning"],
-    "children": ["prompt-engineering", "context-engineering", "rag", "ai-agents"],
+    "children": ["prompt-engineering", "context-engineering", "embeddings-vector-search", "rag", "fine-tuning", "inference-serving", "llmops", "ai-agents"],
     "featuredResourceIds": ["attention-is-all-you-need", "prompt-engineering-guide"]
   },
   {
@@ -80,13 +89,130 @@
     "featuredResourceIds": ["context-engineering-phil-schmid"]
   },
   {
+    "id": "embeddings-vector-search",
+    "title": "Embedding 与向量检索",
+    "summary": "把文本、图片或多模态内容转成向量表示，并用相似度检索支撑语义搜索、RAG、推荐和聚类。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models"],
+    "children": ["vector-databases"],
+    "featuredResourceIds": ["sentence-bert-paper", "faiss-docs"]
+  },
+  {
+    "id": "vector-databases",
+    "title": "向量数据库",
+    "summary": "用于存储、索引和检索 embedding 的数据库或检索引擎，是 RAG 和语义搜索系统的重要基础设施。",
+    "parentId": "embeddings-vector-search",
+    "prerequisites": ["embeddings-vector-search"],
+    "children": [],
+    "featuredResourceIds": ["faiss-docs", "chroma-docs"]
+  },
+  {
     "id": "rag",
     "title": "检索增强生成",
     "summary": "把检索系统和生成模型结合起来，让回答能够基于外部知识和资料。",
     "parentId": "context-engineering",
     "prerequisites": ["large-language-models"],
+    "children": ["rag-evaluation"],
+    "featuredResourceIds": ["rag-paper", "llamaindex-docs"]
+  },
+  {
+    "id": "rag-evaluation",
+    "title": "RAG 评测",
+    "summary": "评估检索质量、上下文相关性、答案忠实性、引用可靠性和端到端任务效果。",
+    "parentId": "rag",
+    "prerequisites": ["rag", "evaluation"],
     "children": [],
-    "featuredResourceIds": ["rag-paper"]
+    "featuredResourceIds": ["ragas-docs"]
+  },
+  {
+    "id": "fine-tuning",
+    "title": "模型微调",
+    "summary": "用领域数据或任务数据进一步训练模型，包括监督微调、参数高效微调、偏好优化和领域适配。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models"],
+    "children": ["peft-lora", "rlhf-dpo", "synthetic-data"],
+    "featuredResourceIds": ["lora-paper", "huggingface-peft-docs"]
+  },
+  {
+    "id": "peft-lora",
+    "title": "PEFT / LoRA",
+    "summary": "通过少量新增参数完成模型适配，降低微调显存、算力和存储成本。",
+    "parentId": "fine-tuning",
+    "prerequisites": ["fine-tuning"],
+    "children": [],
+    "featuredResourceIds": ["lora-paper", "huggingface-peft-docs"]
+  },
+  {
+    "id": "rlhf-dpo",
+    "title": "RLHF / DPO / 偏好优化",
+    "summary": "利用人类反馈或偏好数据让模型更符合指令、价值和任务偏好，是对齐和后训练的重要方向。",
+    "parentId": "fine-tuning",
+    "prerequisites": ["fine-tuning"],
+    "children": [],
+    "featuredResourceIds": ["instructgpt-paper", "dpo-paper"]
+  },
+  {
+    "id": "synthetic-data",
+    "title": "合成数据",
+    "summary": "用模型生成、改写或扩展训练和评测数据，用于微调、评测、数据增强和领域适配。",
+    "parentId": "fine-tuning",
+    "prerequisites": ["fine-tuning"],
+    "children": [],
+    "featuredResourceIds": ["self-instruct-paper"]
+  },
+  {
+    "id": "inference-serving",
+    "title": "推理服务",
+    "summary": "把模型部署成稳定、高吞吐、低延迟、可观测的在线服务，涉及批处理、KV cache、并发、弹性和成本。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models"],
+    "children": ["inference-optimization", "gpu-computing"],
+    "featuredResourceIds": ["vllm-docs"]
+  },
+  {
+    "id": "inference-optimization",
+    "title": "推理优化",
+    "summary": "通过连续批处理、KV cache 管理、量化、并行和高效 kernel 提升大模型推理吞吐与延迟表现。",
+    "parentId": "inference-serving",
+    "prerequisites": ["inference-serving"],
+    "children": ["quantization"],
+    "featuredResourceIds": ["vllm-docs", "tensorrt-llm-docs"]
+  },
+  {
+    "id": "quantization",
+    "title": "量化",
+    "summary": "用更低精度表示模型权重或激活，以降低显存占用、提升推理速度并控制部署成本。",
+    "parentId": "inference-optimization",
+    "prerequisites": ["inference-optimization"],
+    "children": [],
+    "featuredResourceIds": ["huggingface-quantization-docs"]
+  },
+  {
+    "id": "gpu-computing",
+    "title": "GPU 计算",
+    "summary": "理解 GPU 并行计算、显存、kernel、通信和硬件约束，是训练和推理优化岗位的关键基础。",
+    "parentId": "inference-serving",
+    "prerequisites": ["deep-learning"],
+    "children": ["cuda-triton"],
+    "featuredResourceIds": ["cuda-programming-guide"]
+  },
+  {
+    "id": "cuda-triton",
+    "title": "CUDA / Triton",
+    "summary": "用于编写和优化 GPU kernel 的底层技术栈，在高性能训练、推理和自定义算子中常被招聘要求提及。",
+    "parentId": "gpu-computing",
+    "prerequisites": ["gpu-computing"],
+    "children": [],
+    "featuredResourceIds": ["cuda-programming-guide", "triton-docs"]
+  },
+  {
+    "id": "llmops",
+    "title": "LLMOps",
+    "summary": "围绕 LLM 应用的部署、监控、评测、版本、提示词管理、数据闭环和成本治理的工程实践。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models"],
+    "children": ["model-evaluation"],
+    "featuredResourceIds": ["langsmith-docs", "openai-evals-repo"]
   },
   {
     "id": "ai-agents",
@@ -211,8 +337,17 @@
     "summary": "围绕 AI 系统效果、可靠性和安全性的基准测试、人工评估与自动化评测方法。",
     "parentId": "ai-foundations",
     "prerequisites": ["ai-foundations"],
-    "children": ["verification"],
+    "children": ["model-evaluation", "rag-evaluation", "verification"],
     "featuredResourceIds": ["openai-evals-repo"]
+  },
+  {
+    "id": "model-evaluation",
+    "title": "模型与系统评测",
+    "summary": "通过任务集、自动指标、人工评审、红队、安全检查和线上反馈评估模型或 AI 系统是否可靠。",
+    "parentId": "evaluation",
+    "prerequisites": ["evaluation"],
+    "children": [],
+    "featuredResourceIds": ["openai-evals-repo", "ragas-docs"]
   },
   {
     "id": "ai-safety",

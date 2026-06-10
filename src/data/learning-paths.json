@@ -3,25 +3,187 @@
     "id": "ai-beginner",
     "title": "AI 入门路径",
     "audience": "希望建立 AI 整体地图的学生和自学者。",
-    "summary": "先从 AI 基础开始，再逐步进入机器学习、深度学习和现代大语言模型。",
-    "topicIds": ["ai-foundations", "ai-education", "machine-learning", "deep-learning", "large-language-models"],
-    "resourceIds": ["welch-labs-youtube", "hands-on-ml-book", "deep-learning-book", "hugging-face-course", "karpathy-state-of-gpt"]
+    "summary": "先建立数学、机器学习、深度学习和 Transformer 的直觉，再进入大语言模型、RAG、agent 与安全。核心不是追热点，而是看懂新概念落在知识树的哪一层。",
+    "topicIds": ["ai-foundations", "ai-education", "machine-learning", "deep-learning", "transformer-architecture", "large-language-models"],
+    "resourceIds": ["welch-labs-youtube", "hands-on-ml-book", "deep-learning-book", "illustrated-transformer", "karpathy-state-of-gpt", "hugging-face-course"],
+    "stages": [
+      {
+        "title": "先建立学习坐标系",
+        "focus": "理解 AI、机器学习、深度学习之间的包含关系，知道模型为什么需要数据、损失函数、优化和评测。",
+        "connection": "这一层回答“AI 系统为什么能学”，后面的 Transformer、RAG 和 agent 都是在这个基础上继续堆叠工程能力。",
+        "topicIds": ["ai-foundations", "machine-learning"],
+        "resourceIds": ["welch-labs-youtube", "hands-on-ml-book"]
+      },
+      {
+        "title": "进入神经网络与 Transformer",
+        "focus": "学习表示学习、注意力机制、编码器/解码器、token 和预训练模型的基本结构。",
+        "connection": "Transformer 是现代 LLM、embedding、多模态模型和 agent 推理能力的共同底座。",
+        "topicIds": ["deep-learning", "transformer-architecture"],
+        "resourceIds": ["deep-learning-book", "illustrated-transformer", "attention-is-all-you-need"]
+      },
+      {
+        "title": "把模型能力接到应用世界",
+        "focus": "理解 GPT 类模型如何训练、如何使用，以及 prompt、上下文、工具和评测为什么决定实际效果。",
+        "connection": "从这里开始，学习重点从“模型是什么”转向“如何把模型变成可靠应用”。",
+        "topicIds": ["large-language-models", "prompt-engineering", "context-engineering", "evaluation"],
+        "resourceIds": ["karpathy-state-of-gpt", "hugging-face-course", "prompt-engineering-guide"]
+      }
+    ]
   },
   {
-    "id": "agent-builder",
-    "title": "AI Agent 构建路径",
-    "audience": "想要构建可调用工具的 AI agent 的开发者。",
-    "summary": "学习大语言模型基础、上下文工程、工具调用、评测方法和实用 agent 工具。",
-    "topicIds": ["large-language-models", "prompt-engineering", "context-engineering", "rag", "ai-agents", "agent-engineering", "evaluation"],
-    "resourceIds": ["attention-is-all-you-need", "prompt-engineering-guide", "context-engineering-phil-schmid", "rag-paper", "openai-agents-sdk-docs", "openai-evals-repo"]
+    "id": "llm-engineer-foundation",
+    "title": "大模型工程基础路径",
+    "audience": "想成为 LLM / AI 应用工程师的学习者。",
+    "summary": "围绕招聘中高频出现的 Transformer、embedding、RAG、微调、评测和部署建立完整主线。",
+    "topicIds": ["transformer-architecture", "large-language-models", "embeddings-vector-search", "rag", "fine-tuning", "model-evaluation", "inference-serving"],
+    "resourceIds": ["cs224n-course", "huggingface-transformers-docs", "sentence-bert-paper", "rag-paper", "lora-paper", "openai-evals-repo", "vllm-docs"],
+    "stages": [
+      {
+        "title": "模型与表示",
+        "focus": "掌握 Transformer、tokenizer、embedding 和预训练模型接口。",
+        "connection": "Embedding 把模型从文本生成扩展到语义检索，是 RAG、推荐和知识库问答的桥。",
+        "topicIds": ["transformer-architecture", "large-language-models", "embeddings-vector-search"],
+        "resourceIds": ["cs224n-course", "huggingface-transformers-docs", "sentence-bert-paper"]
+      },
+      {
+        "title": "知识增强与任务适配",
+        "focus": "学习什么时候用 RAG，什么时候用微调，以及如何用数据让模型更适合具体任务。",
+        "connection": "RAG 解决知识更新和可引用性，微调解决行为风格和任务分布，两者经常在真实产品中组合使用。",
+        "topicIds": ["rag", "fine-tuning", "peft-lora", "synthetic-data"],
+        "resourceIds": ["rag-paper", "llamaindex-docs", "lora-paper", "huggingface-peft-docs"]
+      },
+      {
+        "title": "可靠性与上线",
+        "focus": "建立评测、推理服务、监控和成本意识。",
+        "connection": "模型能力只有通过评测和服务化才能进入生产环境，LLMOps 把实验结果变成可持续迭代的系统。",
+        "topicIds": ["model-evaluation", "inference-serving", "llmops"],
+        "resourceIds": ["openai-evals-repo", "vllm-docs", "langsmith-docs"]
+      }
+    ]
   },
   {
-    "id": "multimodal-starter",
-    "title": "多模态 AI 起步路径",
-    "audience": "想理解图文模型和多模态 AI 系统的学习者。",
-    "summary": "从视觉数据集、对比学习和图文模型开始建立多模态 AI 直觉。",
-    "topicIds": ["deep-learning", "multimodal-ai", "evaluation"],
-    "resourceIds": ["imagenet-dataset", "clip-paper", "hugging-face-course"]
+    "id": "rag-engineer",
+    "title": "RAG 与知识库工程路径",
+    "audience": "想做知识库问答、企业搜索、文档助手和研究助理类产品的开发者。",
+    "summary": "RAG 不是“向量数据库加聊天框”，而是由文档处理、embedding、检索、重排、上下文组织、引用和评测构成的系统。",
+    "topicIds": ["embeddings-vector-search", "vector-databases", "rag", "context-engineering", "rag-evaluation", "model-evaluation"],
+    "resourceIds": ["sentence-bert-paper", "faiss-docs", "chroma-docs", "rag-paper", "llamaindex-docs", "ragas-docs"],
+    "stages": [
+      {
+        "title": "从语义表示到检索",
+        "focus": "理解 embedding 如何表达语义，相似度搜索如何把问题映射到相关文档。",
+        "connection": "没有高质量检索，后面的生成模型只能在错误上下文里“认真胡说”。",
+        "topicIds": ["embeddings-vector-search", "vector-databases"],
+        "resourceIds": ["sentence-bert-paper", "faiss-docs", "chroma-docs"]
+      },
+      {
+        "title": "从检索到上下文工程",
+        "focus": "学习文档切分、元数据、检索策略、上下文压缩和引用组织。",
+        "connection": "RAG 是 Context Engineering 的核心案例：你不是只问模型，而是在决定模型应该看见什么证据。",
+        "topicIds": ["rag", "context-engineering", "context-selection"],
+        "resourceIds": ["rag-paper", "llamaindex-docs", "context-engineering-phil-schmid"]
+      },
+      {
+        "title": "从 demo 到可评测系统",
+        "focus": "评估检索命中、上下文相关性、答案忠实性和用户任务成功率。",
+        "connection": "RAG 的效果瓶颈往往不在模型，而在数据、检索和评测闭环。",
+        "topicIds": ["rag-evaluation", "model-evaluation"],
+        "resourceIds": ["ragas-docs", "openai-evals-repo"]
+      }
+    ]
+  },
+  {
+    "id": "agent-plugin-builder",
+    "title": "Agent、Skills 与插件构建路径",
+    "audience": "想开发 agent 项目、Codex 插件、skills 或工具生态的开发者。",
+    "summary": "从工具调用开始，逐步理解编排、记忆、权限、观测、验证和可复用能力封装。",
+    "topicIds": ["ai-agents", "agent-engineering", "tool-use", "model-context-protocol", "orchestration", "memory-systems", "harness-engineering", "permissions-safety"],
+    "resourceIds": ["openai-agents-sdk-docs", "langgraph-docs", "crewai-docs", "mcp-docs", "claude-code-skills-docs", "openai-skills-docs", "codex-plugins-docs"],
+    "stages": [
+      {
+        "title": "先让模型能安全地行动",
+        "focus": "学习工具调用、函数接口、MCP 和外部环境连接方式。",
+        "connection": "Agent 的核心不是“会聊天”，而是能在权限边界内观察、调用工具并产生可验证动作。",
+        "topicIds": ["ai-agents", "tool-use", "model-context-protocol"],
+        "resourceIds": ["openai-agents-sdk-docs", "mcp-docs"]
+      },
+      {
+        "title": "把一次调用变成工作流",
+        "focus": "学习状态管理、任务分解、多 agent 协作、人类确认、重试和长期记忆。",
+        "connection": "编排把单次模型调用升级为可持续执行的流程，记忆让 agent 能跨任务积累上下文。",
+        "topicIds": ["agent-engineering", "orchestration", "multi-agent-systems", "memory-systems"],
+        "resourceIds": ["langgraph-docs", "crewai-docs", "semaclaw-harness-paper"]
+      },
+      {
+        "title": "沉淀为 Skills 与插件",
+        "focus": "把可复用流程、说明、脚本、资源和权限要求封装成能力包。",
+        "connection": "Skills 和插件是 agent 工程的复用层：它们把经验从一次项目变成别人也能安装和使用的能力。",
+        "topicIds": ["harness-engineering", "permissions-safety", "verification"],
+        "resourceIds": ["claude-code-skills-docs", "openai-skills-docs", "codex-plugins-docs"]
+      }
+    ]
+  },
+  {
+    "id": "finetuning-alignment",
+    "title": "微调、后训练与对齐路径",
+    "audience": "想理解 SFT、LoRA、RLHF、DPO、合成数据和领域适配的学习者。",
+    "summary": "把“模型会什么”与“模型应该如何表现”区分开，理解微调、偏好优化和数据构造之间的关系。",
+    "topicIds": ["fine-tuning", "peft-lora", "rlhf-dpo", "synthetic-data", "model-evaluation"],
+    "resourceIds": ["lora-paper", "huggingface-peft-docs", "instructgpt-paper", "dpo-paper", "self-instruct-paper", "openai-evals-repo"],
+    "stages": [
+      {
+        "title": "任务适配",
+        "focus": "用 SFT、PEFT 和 LoRA 让模型适应领域格式、语气、任务和数据分布。",
+        "connection": "微调不是替代 RAG，而是让模型在已有知识和行为模式上更贴近目标任务。",
+        "topicIds": ["fine-tuning", "peft-lora"],
+        "resourceIds": ["lora-paper", "huggingface-peft-docs"]
+      },
+      {
+        "title": "偏好与对齐",
+        "focus": "理解 RLHF、DPO 和偏好数据如何影响模型回答风格、安全性和可用性。",
+        "connection": "SFT 教模型“会做什么”，偏好优化更像教模型“什么回答更好”。",
+        "topicIds": ["rlhf-dpo"],
+        "resourceIds": ["instructgpt-paper", "dpo-paper"]
+      },
+      {
+        "title": "数据闭环",
+        "focus": "学习合成数据、人工反馈、错误案例挖掘和评测集合构建。",
+        "connection": "后训练的长期竞争力来自数据闭环：发现失败、生成样本、重新训练、再次评测。",
+        "topicIds": ["synthetic-data", "model-evaluation"],
+        "resourceIds": ["self-instruct-paper", "openai-evals-repo"]
+      }
+    ]
+  },
+  {
+    "id": "inference-systems",
+    "title": "大模型推理与系统工程路径",
+    "audience": "想进入 AI Infra、推理优化、模型部署或高性能系统方向的学习者。",
+    "summary": "从“能跑模型”进入“低延迟、高吞吐、低成本、可监控地跑模型”。这是很多 AI 公司招聘里非常看重的工程能力。",
+    "topicIds": ["inference-serving", "inference-optimization", "quantization", "gpu-computing", "cuda-triton", "llmops"],
+    "resourceIds": ["vllm-docs", "tensorrt-llm-docs", "huggingface-quantization-docs", "cuda-programming-guide", "triton-docs", "langsmith-docs"],
+    "stages": [
+      {
+        "title": "服务化推理",
+        "focus": "理解模型加载、batching、并发、KV cache、吞吐、延迟和 API 服务。",
+        "connection": "推理服务把模型能力变成产品能力，直接影响用户体验和商业成本。",
+        "topicIds": ["inference-serving", "llmops"],
+        "resourceIds": ["vllm-docs", "langsmith-docs"]
+      },
+      {
+        "title": "优化显存与速度",
+        "focus": "学习量化、连续批处理、并行策略和推理优化工具链。",
+        "connection": "当请求量增长时，瓶颈从 prompt 质量转向 GPU 利用率、内存带宽和调度效率。",
+        "topicIds": ["inference-optimization", "quantization"],
+        "resourceIds": ["tensorrt-llm-docs", "huggingface-quantization-docs"]
+      },
+      {
+        "title": "深入 GPU 与 kernel",
+        "focus": "理解 CUDA 编程模型、Triton kernel、显存层级和算子优化。",
+        "connection": "这是从 AI 应用工程走向 AI 系统工程的分界线，也是很多高阶 infra 岗位的核心能力。",
+        "topicIds": ["gpu-computing", "cuda-triton"],
+        "resourceIds": ["cuda-programming-guide", "triton-docs"]
+      }
+    ]
   },
   {
     "id": "modern-ai-engineering",
@@ -29,7 +191,30 @@
     "audience": "想从提示词走向可维护 AI 系统的开发者和研究型学习者。",
     "summary": "按 Prompt Engineering、Context Engineering、Agent Engineering、Harness Engineering 的顺序理解 AI 工程能力如何逐层上升。",
     "topicIds": ["prompt-engineering", "context-engineering", "agent-engineering", "harness-engineering", "observability", "permissions-safety", "verification"],
-    "resourceIds": ["prompt-engineering-guide", "context-engineering-phil-schmid", "openai-agents-sdk-docs", "ai-harness-engineering-paper", "agentic-harness-engineering-paper", "semaclaw-harness-paper"]
+    "resourceIds": ["prompt-engineering-guide", "context-engineering-phil-schmid", "openai-agents-sdk-docs", "ai-harness-engineering-paper", "agentic-harness-engineering-paper", "semaclaw-harness-paper"],
+    "stages": [
+      {
+        "title": "Prompt 是局部控制",
+        "focus": "用结构化指令、示例和输出格式控制单次模型行为。",
+        "connection": "Prompt Engineering 是入口，但它只能控制模型看到的一小部分输入。",
+        "topicIds": ["prompt-engineering", "prompt-patterns"],
+        "resourceIds": ["prompt-engineering-guide"]
+      },
+      {
+        "title": "Context 是系统输入",
+        "focus": "组织系统提示、文件、检索结果、历史、工具说明和任务状态。",
+        "connection": "Context Engineering 把局部 prompt 扩展成完整运行环境，RAG 和 agent 都依赖它。",
+        "topicIds": ["context-engineering", "context-selection", "rag"],
+        "resourceIds": ["context-engineering-phil-schmid", "rag-paper"]
+      },
+      {
+        "title": "Harness 是运行时底座",
+        "focus": "把工具、权限、观测、验证、记忆和人工确认合成可治理的 agent 运行时。",
+        "connection": "Harness Engineering 让 agent 从 demo 走向可复盘、可评估、可回滚的工程系统。",
+        "topicIds": ["agent-engineering", "harness-engineering", "observability", "verification"],
+        "resourceIds": ["openai-agents-sdk-docs", "ai-harness-engineering-paper", "agentic-harness-engineering-paper"]
+      }
+    ]
   },
   {
     "id": "agent-security",
@@ -37,6 +222,29 @@
     "audience": "关注 AI agent、MCP 工具生态和 prompt injection 风险的开发者。",
     "summary": "从 prompt injection 基础开始，逐步理解 MCP 安全、agent 权限边界、系统级防御和 promptware 威胁建模。",
     "topicIds": ["prompt-injection", "agent-security", "mcp-security", "permissions-safety", "harness-engineering"],
-    "resourceIds": ["prompt-injection-overview", "mcp-prompt-injection-paper", "secure-ai-agents-paper", "ai-agents-prompt-injection-paper", "promptware-kill-chain-paper"]
+    "resourceIds": ["prompt-injection-overview", "mcp-prompt-injection-paper", "secure-ai-agents-paper", "ai-agents-prompt-injection-paper", "promptware-kill-chain-paper"],
+    "stages": [
+      {
+        "title": "理解攻击入口",
+        "focus": "先理解 prompt injection、间接注入、工具描述污染和跨上下文攻击。",
+        "connection": "当模型能读取网页、邮件、文档和工具输出时，外部内容就可能变成攻击面。",
+        "topicIds": ["prompt-injection", "mcp-security"],
+        "resourceIds": ["prompt-injection-overview", "mcp-prompt-injection-paper"]
+      },
+      {
+        "title": "设计权限边界",
+        "focus": "学习如何限制文件、网络、凭据、命令和外部系统访问，并加入人工确认。",
+        "connection": "安全的 agent 不是完全信任模型，而是用系统边界限制错误决策的损害范围。",
+        "topicIds": ["agent-security", "permissions-safety"],
+        "resourceIds": ["secure-ai-agents-paper", "ai-agents-prompt-injection-paper"]
+      },
+      {
+        "title": "建立审计与复盘",
+        "focus": "记录工具调用、上下文来源、权限决策和最终动作，便于回溯风险。",
+        "connection": "可观测性和验证把安全从事后猜测变成可检查的工程流程。",
+        "topicIds": ["harness-engineering", "observability", "verification"],
+        "resourceIds": ["promptware-kill-chain-paper", "agentic-harness-engineering-paper"]
+      }
+    ]
   }
 ]
