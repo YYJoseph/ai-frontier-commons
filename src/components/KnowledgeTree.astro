@@ -12,13 +12,17 @@ interface RenderedTopicNode {
 }
 
 const { topics } = Astro.props;
-const topicById = new Map<string, TopicNode>(topics.map((topic: TopicNode) => [topic.id, topic]));
 const roots = topics.filter((topic: TopicNode) => !topic.parentId);
+const childrenByParentId = topics.reduce<Map<string, TopicNode[]>>((acc, topic: TopicNode) => {
+  if (!topic.parentId) {
+    return acc;
+  }
+  acc.set(topic.parentId, [...(acc.get(topic.parentId) || []), topic]);
+  return acc;
+}, new Map<string, TopicNode[]>());
 
 const renderNode = (topic: TopicNode): RenderedTopicNode => {
-  const children = (topic.children || [])
-    .map((childId: string) => topicById.get(childId))
-    .filter((child): child is TopicNode => Boolean(child));
+  const children = childrenByParentId.get(topic.id) || [];
   return { topic, children: children.map(renderNode) };
 };
 
