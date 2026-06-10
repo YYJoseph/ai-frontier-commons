@@ -11,9 +11,9 @@
     "id": "agent-builder",
     "title": "AI Agent 构建路径",
     "audience": "想要构建可调用工具的 AI agent 的开发者。",
-    "summary": "学习大语言模型基础、检索增强、评测方法和实用 agent 工具。",
-    "topicIds": ["large-language-models", "rag", "ai-agents", "evaluation"],
-    "resourceIds": ["attention-is-all-you-need", "rag-paper", "openai-agents-sdk-docs", "openai-evals-repo"]
+    "summary": "学习大语言模型基础、上下文工程、工具调用、评测方法和实用 agent 工具。",
+    "topicIds": ["large-language-models", "prompt-engineering", "context-engineering", "rag", "ai-agents", "agent-engineering", "evaluation"],
+    "resourceIds": ["attention-is-all-you-need", "prompt-engineering-guide", "context-engineering-phil-schmid", "rag-paper", "openai-agents-sdk-docs", "openai-evals-repo"]
   },
   {
     "id": "multimodal-starter",
@@ -22,5 +22,13 @@
     "summary": "从视觉数据集、对比学习和图文模型开始建立多模态 AI 直觉。",
     "topicIds": ["deep-learning", "multimodal-ai", "evaluation"],
     "resourceIds": ["imagenet-dataset", "clip-paper", "hugging-face-course"]
+  },
+  {
+    "id": "modern-ai-engineering",
+    "title": "现代 AI 工程路径",
+    "audience": "想从提示词走向可维护 AI 系统的开发者和研究型学习者。",
+    "summary": "按 Prompt Engineering、Context Engineering、Agent Engineering、Harness Engineering 的顺序理解 AI 工程能力如何逐层上升。",
+    "topicIds": ["prompt-engineering", "context-engineering", "agent-engineering", "harness-engineering", "observability", "permissions-safety", "verification"],
+    "resourceIds": ["prompt-engineering-guide", "context-engineering-phil-schmid", "openai-agents-sdk-docs", "ai-harness-engineering-paper", "agentic-harness-engineering-paper", "semaclaw-harness-paper"]
   }
 ]

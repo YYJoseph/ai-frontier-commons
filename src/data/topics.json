@@ -4,8 +4,8 @@
     "title": "AI 基础",
     "summary": "理解现代 AI 所需的核心概念、发展脉络、数学基础与计算基础。",
     "prerequisites": [],
-    "children": ["machine-learning", "deep-learning", "evaluation"],
-    "featuredResourceIds": ["hands-on-ml-book"]
+    "children": ["machine-learning", "deep-learning", "modern-ai-engineering", "evaluation", "ai-safety"],
+    "featuredResourceIds": ["hands-on-ml-book", "karpathy-state-of-gpt"]
   },
   {
     "id": "machine-learning",
@@ -31,26 +31,143 @@
     "summary": "以 Transformer 为代表的模型体系，用于语言理解、生成、推理和工具调用。",
     "parentId": "deep-learning",
     "prerequisites": ["deep-learning"],
-    "children": ["ai-agents", "rag"],
-    "featuredResourceIds": ["attention-is-all-you-need"]
+    "children": ["prompt-engineering", "context-engineering", "rag", "ai-agents"],
+    "featuredResourceIds": ["attention-is-all-you-need", "prompt-engineering-guide"]
+  },
+  {
+    "id": "prompt-engineering",
+    "title": "Prompt Engineering",
+    "summary": "通过设计、约束和迭代输入指令，引导模型输出更准确、更稳定、更符合任务目标的结果。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models"],
+    "children": ["prompt-patterns", "prompt-injection"],
+    "featuredResourceIds": ["prompt-engineering-guide"]
+  },
+  {
+    "id": "prompt-patterns",
+    "title": "提示词模式",
+    "summary": "角色设定、少样本示例、结构化输出、分步推理、自我检查等常见提示词设计模式。",
+    "parentId": "prompt-engineering",
+    "prerequisites": ["prompt-engineering"],
+    "children": [],
+    "featuredResourceIds": ["prompt-engineering-guide"]
+  },
+  {
+    "id": "context-engineering",
+    "title": "Context Engineering",
+    "summary": "从“写好一句 prompt”扩展到“为模型组织完整上下文”，包括系统指令、文档、工具、记忆、RAG 和任务状态。",
+    "parentId": "large-language-models",
+    "prerequisites": ["large-language-models", "prompt-engineering"],
+    "children": ["rag", "memory-systems", "context-selection"],
+    "featuredResourceIds": ["context-engineering-phil-schmid", "rag-paper"]
+  },
+  {
+    "id": "context-selection",
+    "title": "上下文选择",
+    "summary": "在有限上下文窗口内选择最相关的文件、历史、示例和约束，减少噪声并提高任务成功率。",
+    "parentId": "context-engineering",
+    "prerequisites": ["context-engineering"],
+    "children": [],
+    "featuredResourceIds": ["context-engineering-phil-schmid"]
+  },
+  {
+    "id": "rag",
+    "title": "检索增强生成",
+    "summary": "把检索系统和生成模型结合起来，让回答能够基于外部知识和资料。",
+    "parentId": "context-engineering",
+    "prerequisites": ["large-language-models"],
+    "children": [],
+    "featuredResourceIds": ["rag-paper"]
   },
   {
     "id": "ai-agents",
     "title": "AI Agent",
     "summary": "能够利用模型进行规划、调用工具、观察结果并完成任务的系统。",
     "parentId": "large-language-models",
+    "prerequisites": ["large-language-models", "context-engineering"],
+    "children": ["agent-engineering", "tool-use", "memory-systems", "multi-agent-systems"],
+    "featuredResourceIds": ["openai-agents-sdk-docs"]
+  },
+  {
+    "id": "agent-engineering",
+    "title": "Agent Engineering",
+    "summary": "围绕目标分解、工具调用、状态管理、错误恢复、权限控制和评测闭环来设计可运行的 agent 系统。",
+    "parentId": "ai-agents",
+    "prerequisites": ["ai-agents", "context-engineering"],
+    "children": ["tool-use", "orchestration", "harness-engineering", "verification"],
+    "featuredResourceIds": ["openai-agents-sdk-docs", "ai-harness-engineering-paper"]
+  },
+  {
+    "id": "tool-use",
+    "title": "工具调用",
+    "summary": "让模型通过函数、API、浏览器、终端、数据库或 MCP 等外部工具观察世界并执行动作。",
+    "parentId": "agent-engineering",
     "prerequisites": ["large-language-models"],
     "children": [],
     "featuredResourceIds": ["openai-agents-sdk-docs"]
   },
   {
-    "id": "rag",
-    "title": "检索增强生成",
-    "summary": "把检索系统和生成模型结合起来，让回答能够基于外部知识和资料。",
-    "parentId": "large-language-models",
-    "prerequisites": ["large-language-models"],
+    "id": "orchestration",
+    "title": "编排与工作流",
+    "summary": "把任务拆解、模型调用、工具步骤、人工确认和失败重试组织成可追踪的执行流程。",
+    "parentId": "agent-engineering",
+    "prerequisites": ["ai-agents"],
+    "children": ["multi-agent-systems"],
+    "featuredResourceIds": ["openai-agents-sdk-docs"]
+  },
+  {
+    "id": "memory-systems",
+    "title": "记忆系统",
+    "summary": "让 agent 保存和检索项目、用户、任务和经验信息，以支持长期任务和持续协作。",
+    "parentId": "context-engineering",
+    "prerequisites": ["context-engineering"],
     "children": [],
-    "featuredResourceIds": ["rag-paper"]
+    "featuredResourceIds": ["semaclaw-harness-paper"]
+  },
+  {
+    "id": "multi-agent-systems",
+    "title": "多 Agent 系统",
+    "summary": "多个 agent 通过分工、协作、评审、投票或层级控制共同完成复杂任务。",
+    "parentId": "ai-agents",
+    "prerequisites": ["ai-agents", "orchestration"],
+    "children": [],
+    "featuredResourceIds": ["semaclaw-harness-paper"]
+  },
+  {
+    "id": "harness-engineering",
+    "title": "Harness Engineering",
+    "summary": "设计围绕模型的运行时底座，包括提示词、工具、权限、记忆、观测、验证、状态和人工干预记录，让 agent 从 demo 走向可控系统。",
+    "parentId": "agent-engineering",
+    "prerequisites": ["agent-engineering"],
+    "children": ["observability", "permissions-safety", "verification"],
+    "featuredResourceIds": ["ai-harness-engineering-paper", "agentic-harness-engineering-paper"]
+  },
+  {
+    "id": "observability",
+    "title": "可观测性",
+    "summary": "记录 agent 的输入、工具调用、轨迹、错误、重试、决策和验证证据，帮助复盘与改进系统。",
+    "parentId": "harness-engineering",
+    "prerequisites": ["harness-engineering"],
+    "children": [],
+    "featuredResourceIds": ["agentic-harness-engineering-paper"]
+  },
+  {
+    "id": "permissions-safety",
+    "title": "权限与安全边界",
+    "summary": "限制 agent 能访问的文件、网络、命令、凭据和外部系统，并在高风险动作前加入确认和审计。",
+    "parentId": "harness-engineering",
+    "prerequisites": ["harness-engineering"],
+    "children": ["prompt-injection"],
+    "featuredResourceIds": ["semaclaw-harness-paper"]
+  },
+  {
+    "id": "verification",
+    "title": "验证与完成判定",
+    "summary": "通过测试、评测、日志、截图、人工检查或结构化报告来判断 agent 的输出是否真的完成任务。",
+    "parentId": "harness-engineering",
+    "prerequisites": ["evaluation", "agent-engineering"],
+    "children": [],
+    "featuredResourceIds": ["openai-evals-repo", "ai-harness-engineering-paper"]
   },
   {
     "id": "multimodal-ai",
@@ -62,12 +179,39 @@
     "featuredResourceIds": ["clip-paper"]
   },
   {
+    "id": "modern-ai-engineering",
+    "title": "现代 AI 工程",
+    "summary": "把模型能力、上下文、工具、评测、安全和产品体验组合成可落地系统的工程实践。",
+    "parentId": "ai-foundations",
+    "prerequisites": ["ai-foundations"],
+    "children": ["prompt-engineering", "context-engineering", "agent-engineering", "harness-engineering"],
+    "featuredResourceIds": ["prompt-engineering-guide", "ai-harness-engineering-paper"]
+  },
+  {
     "id": "evaluation",
     "title": "评测",
     "summary": "围绕 AI 系统效果、可靠性和安全性的基准测试、人工评估与自动化评测方法。",
     "parentId": "ai-foundations",
     "prerequisites": ["ai-foundations"],
-    "children": [],
+    "children": ["verification"],
     "featuredResourceIds": ["openai-evals-repo"]
+  },
+  {
+    "id": "ai-safety",
+    "title": "AI 安全",
+    "summary": "研究和实践如何降低 AI 系统的滥用、失控、越权、偏见、隐私和安全风险。",
+    "parentId": "ai-foundations",
+    "prerequisites": ["ai-foundations"],
+    "children": ["prompt-injection", "permissions-safety"],
+    "featuredResourceIds": ["prompt-injection-overview"]
+  },
+  {
+    "id": "prompt-injection",
+    "title": "Prompt Injection",
+    "summary": "攻击者通过输入内容覆盖或诱导模型违背原始指令，是 LLM 应用和 agent 系统的重要安全风险。",
+    "parentId": "ai-safety",
+    "prerequisites": ["prompt-engineering"],
+    "children": [],
+    "featuredResourceIds": ["prompt-injection-overview"]
   }
 ]

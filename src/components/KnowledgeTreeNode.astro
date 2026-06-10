@@ -1,0 +1,30 @@
+---
+import type { TopicNode } from "../lib/schema";
+
+interface RenderedTopicNode {
+  topic: TopicNode;
+  children: RenderedTopicNode[];
+}
+
+interface Props {
+  node: RenderedTopicNode;
+  depth?: number;
+}
+
+const { node, depth = 0 } = Astro.props;
+const isRoot = depth === 0;
+const headingClass = isRoot ? "text-2xl font-semibold text-ink" : "font-semibold text-ink";
+const containerClass = isRoot
+  ? "rounded-lg border border-stone-200 bg-white p-6 shadow-sm"
+  : "rounded-md border border-stone-200 bg-paper p-4";
+---
+
+<section class={containerClass}>
+  <h2 class={headingClass}>{node.topic.title}</h2>
+  <p class="mt-2 text-sm leading-6 text-slate-700">{node.topic.summary}</p>
+  {node.children.length > 0 && (
+    <div class={isRoot ? "mt-5 grid gap-4 md:grid-cols-2" : "mt-4 space-y-3"}>
+      {node.children.map((child) => <Astro.self node={child} depth={depth + 1} />)}
+    </div>
+  )}
+</section>

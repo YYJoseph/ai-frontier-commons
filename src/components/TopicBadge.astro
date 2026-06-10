@@ -1,5 +1,10 @@
 ---
+import topics from "../data/topics.json";
+import type { TopicNode } from "../lib/schema";
+
 const { label } = Astro.props;
+const topicById = new Map((topics as TopicNode[]).map((topic) => [topic.id, topic.title]));
+const displayLabel = topicById.get(label) ?? label;
 ---
 
-<span class="rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-xs font-medium text-accent">{label}</span>
+<span class="rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-xs font-medium text-accent">{displayLabel}</span>
